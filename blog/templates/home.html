@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Home</h1>
+
+    <!-- posts -->
+    {% for post in posts %}
+        <article class="card">
+            <div class="card-body">
+                <h3 class="card-title"><a href="#">{{ post.title }}</a></h3>
+                <small>By <a href="#">{{ post.author }}</a> on {{ post.date_posted }}</small>
+                <p class="card-text">{{ post.content }}</p>
+                <a href="#" class="btn btn-primary">Read mode</a>
+            </div>
+        </article>
+    {% endfor %}
+
 {% endblock %}
