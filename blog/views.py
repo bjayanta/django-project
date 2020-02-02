@@ -9,6 +9,7 @@ class Home(View):
     }
 
     def get(self, request):
+        self.context['previous_url'] = request.META.get('HTTP_REFERER')
         return render(request, 'home.html', self.context)
 
     def post(self, request):

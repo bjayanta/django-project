@@ -13,19 +13,20 @@ class Register(View):
         return render(request, 'register.html', self.context)
 
     def post(self, request):
-        form = UserRegisterForm(request.POST)
+        self.context['form'] = UserRegisterForm(request.POST or None)
 
-        if form.is_valid():
+        if self.context['form'].is_valid():
             # insert
-            form.save()
+            self.context['form'].save()
 
-            username = form.cleaned_data.get('username')
+            username = self.context['form'].cleaned_data.get('username')
 
             # set flash message
             messages.success(request, f'Account created for {username}!')
 
+            # redirect
             return redirect('blog.home')
-        else:
-            self.context['form'] = UserRegisterForm()
-            return render(request, 'register.html', self.context)
+
+        # view
+        return render(request, 'register.html', self.context)
 

@@ -3,20 +3,20 @@
 {% block content %}
     <div class="card credential">
         <div class="card-body">
-            <h5 class="card-title">Join Today</h5>
+            <h5 class="card-title">Log In</h5>
             
             <form method="POST">
                 {% csrf_token %}
                 
                 {{ form.as_p }}
                 
-                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <button type="submit" class="btn btn-primary">Login</button>
             </form>
 
             <div class="border-top mt-3">
                 <small class="text-muted">
-                    Already have an account? 
-                    <a href="{% url 'login' %}" class="ml-2">Sign In</a>
+                    Need an account? 
+                    <a href="{% url 'register' %}" class="ml-2">Sign up now</a>
                 </small>
             </div>
         </div>
