@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2020 at 08:05 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.8
+-- Generation Time: Feb 02, 2020 at 01:35 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -117,8 +117,10 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$180000$F3fgxxQXixYR$MYujxqxIzj2hcjsL4YfXf7g5vCoGFAxsqH7TbCf3aX4=', '2020-02-01 17:49:48.047476', 1, 'bjayanta', '', '', 'bjayanta.neo@gmail.com', 1, 1, '2020-02-01 17:49:19.608322'),
-(2, 'pbkdf2_sha256$180000$f1jcCHrpG4fT$MJXMwtymC0hBT33PlmLJmXako1f1k7xjszBvqCSMprQ=', NULL, 0, 'testuser', '', '', 'testuser@company.com', 0, 1, '2020-02-01 17:54:49.000000');
+(1, 'pbkdf2_sha256$180000$F3fgxxQXixYR$MYujxqxIzj2hcjsL4YfXf7g5vCoGFAxsqH7TbCf3aX4=', '2020-02-02 10:35:35.271935', 1, 'bjayanta', '', '', 'bjayanta.neo@gmail.com', 1, 1, '2020-02-01 17:49:19.608322'),
+(2, 'pbkdf2_sha256$180000$f1jcCHrpG4fT$MJXMwtymC0hBT33PlmLJmXako1f1k7xjszBvqCSMprQ=', NULL, 0, 'testuser', '', '', 'testuser@company.com', 0, 1, '2020-02-01 17:54:49.000000'),
+(3, 'pbkdf2_sha256$180000$jo2ICyZnxG0Y$xV3Wu0OpE7OB92HZpJMOUt/RweuH/rmjhaKk9cH3Ow8=', NULL, 0, 'newuser', '', '', '', 0, 1, '2020-02-02 10:36:20.852309'),
+(4, 'pbkdf2_sha256$180000$yBQN1oJeMIYF$jMRaTWw2Wv0OnCvQqZ/ZV182N8m1Gyo2DmARbQ5GWxQ=', NULL, 0, 'newuser2', '', '', 'newuser2@gmail.com', 0, 1, '2020-02-02 12:01:25.530845');
 
 -- --------------------------------------------------------
 
@@ -180,15 +182,6 @@ CREATE TABLE `django_admin_log` (
   `object_repr` varchar(200) NOT NULL,
   `action_flag` smallint(5) UNSIGNED NOT NULL
 ) ;
-
---
--- Dumping data for table `django_admin_log`
---
-
-INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
-(1, '2020-02-01 17:54:50.206502', '2', 'testuser', 1, '[{\"added\": {}}]', 4, 1),
-(2, '2020-02-01 17:55:49.467521', '2', 'testuser', 2, '[{\"changed\": {\"fields\": [\"Email address\"]}}]', 4, 1),
-(3, '2020-02-01 18:47:41.000723', '1', 'Blog 1', 2, '[{\"changed\": {\"fields\": [\"Author\"]}}]', 7, 1);
 
 -- --------------------------------------------------------
 
@@ -263,6 +256,13 @@ CREATE TABLE `django_session` (
   `session_data` longtext NOT NULL,
   `expire_date` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `django_session`
+--
+
+INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+('26u56yevwq0ifikl8dns3v52wid2buwd', 'N2U3NjAwZTA1NDMwNzExN2Q3ZDIxNjMzNzMwMmY0NjJhZTY4OTU1Yjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5OGRlMWFkYmM0N2EwOGU4MmExNjRhYWRlN2QyZDRjNTAwYjk2YWE4In0=', '2020-02-16 10:35:35.295922');
 
 --
 -- Indexes for dumped tables
@@ -366,7 +366,7 @@ ALTER TABLE `auth_permission`
 -- AUTO_INCREMENT for table `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `auth_user_groups`

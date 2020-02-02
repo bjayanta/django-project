@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card credential">
+        <div class="card-body">
+            <h5 class="card-title">Join Today</h5>
+
+            {{ form.errors }}
+
+            <form method="POST">
+                {% csrf_token %}
+                
+                {{ form.as_p }}
+                
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+
+            <div class="border-top mt-3">
+                <small class="text-muted">
+                    Already have an account? 
+                    <a href="#" class="ml-2">Sign In</a>
+                </small>
+            </div>
+        </div>
+    </div>
+{% endblock %}

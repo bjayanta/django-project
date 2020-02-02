@@ -58,13 +58,21 @@
     <!-- main container -->
     <main role="main" class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 main-content">
+                <!-- message -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+
+                <!-- main content -->
                 {% block content %}{% endblock %}
             </div>
 
             <!-- right sidebar -->
-            <div class="col-md-4">
-                <div class="list-group right-aside">
+            <div class="col-md-4 right-aside">
+                <div class="list-group">
                     <div class="list-group-item list-group-item-action disabled">
                         <h3>Our Sidebar</h3>
                         <small>You can put any information here you'd like.</small>

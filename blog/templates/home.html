@@ -4,7 +4,7 @@
 
     <!-- posts -->
     {% for post in posts %}
-        <article class="card">
+        <article class="card mb-2">
             <div class="card-body">
                 <h3 class="card-title"><a href="#">{{ post.title }}</a></h3>
                 <small>By <a href="#">{{ post.author }}</a> on {{ post.date_posted|date:"F d, Y" }}</small>
