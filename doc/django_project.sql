@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2020 at 01:35 PM
+-- Generation Time: Feb 03, 2020 at 02:47 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -90,7 +90,11 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (25, 'Can add post', 7, 'add_post'),
 (26, 'Can change post', 7, 'change_post'),
 (27, 'Can delete post', 7, 'delete_post'),
-(28, 'Can view post', 7, 'view_post');
+(28, 'Can view post', 7, 'view_post'),
+(29, 'Can add profile', 8, 'add_profile'),
+(30, 'Can change profile', 8, 'change_profile'),
+(31, 'Can delete profile', 8, 'delete_profile'),
+(32, 'Can view profile', 8, 'view_profile');
 
 -- --------------------------------------------------------
 
@@ -117,9 +121,9 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$180000$F3fgxxQXixYR$MYujxqxIzj2hcjsL4YfXf7g5vCoGFAxsqH7TbCf3aX4=', '2020-02-02 10:35:35.271935', 1, 'bjayanta', '', '', 'bjayanta.neo@gmail.com', 1, 1, '2020-02-01 17:49:19.608322'),
+(1, 'pbkdf2_sha256$180000$F3fgxxQXixYR$MYujxqxIzj2hcjsL4YfXf7g5vCoGFAxsqH7TbCf3aX4=', '2020-02-03 09:36:42.829326', 1, 'bjayanta', '', '', 'bjayanta.neo@gmail.com', 1, 1, '2020-02-01 17:49:19.608322'),
 (2, 'pbkdf2_sha256$180000$f1jcCHrpG4fT$MJXMwtymC0hBT33PlmLJmXako1f1k7xjszBvqCSMprQ=', NULL, 0, 'testuser', '', '', 'testuser@company.com', 0, 1, '2020-02-01 17:54:49.000000'),
-(3, 'pbkdf2_sha256$180000$jo2ICyZnxG0Y$xV3Wu0OpE7OB92HZpJMOUt/RweuH/rmjhaKk9cH3Ow8=', NULL, 0, 'newuser', '', '', '', 0, 1, '2020-02-02 10:36:20.852309'),
+(3, 'pbkdf2_sha256$180000$jo2ICyZnxG0Y$xV3Wu0OpE7OB92HZpJMOUt/RweuH/rmjhaKk9cH3Ow8=', '2020-02-03 06:53:14.793231', 0, 'newuser', '', '', '', 0, 1, '2020-02-02 10:36:20.852309'),
 (4, 'pbkdf2_sha256$180000$yBQN1oJeMIYF$jMRaTWw2Wv0OnCvQqZ/ZV182N8m1Gyo2DmARbQ5GWxQ=', NULL, 0, 'newuser2', '', '', 'newuser2@gmail.com', 0, 1, '2020-02-02 12:01:25.530845');
 
 -- --------------------------------------------------------
@@ -165,7 +169,7 @@ CREATE TABLE `blog_post` (
 --
 
 INSERT INTO `blog_post` (`id`, `title`, `content`, `date_posted`, `author_id`) VALUES
-(1, 'Blog 1', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2020-02-01 18:16:09.000000', 1),
+(1, 'Blog 1', '<h1>Lorem Ipsum</h1> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2020-02-01 18:16:09.000000', 1),
 (2, 'Blog 2', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2020-02-01 18:25:11.668507', 2),
 (3, 'Blog 3', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2020-02-01 18:30:07.016531', 2);
 
@@ -182,6 +186,15 @@ CREATE TABLE `django_admin_log` (
   `object_repr` varchar(200) NOT NULL,
   `action_flag` smallint(5) UNSIGNED NOT NULL
 ) ;
+
+--
+-- Dumping data for table `django_admin_log`
+--
+
+INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
+(1, '2020-02-03 09:37:42.195780', '1', 'newuser Profile', 1, '[{\"added\": {}}]', 8, 1),
+(2, '2020-02-03 11:20:18.132653', '1', 'newuser Profile', 3, '', 8, 1),
+(3, '2020-02-03 11:22:57.335693', '2', 'newuser Profile', 1, '[{\"added\": {}}]', 8, 1);
 
 -- --------------------------------------------------------
 
@@ -206,7 +219,8 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (4, 'auth', 'user'),
 (7, 'blog', 'post'),
 (5, 'contenttypes', 'contenttype'),
-(6, 'sessions', 'session');
+(6, 'sessions', 'session'),
+(8, 'users', 'profile');
 
 -- --------------------------------------------------------
 
@@ -243,7 +257,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (15, 'auth', '0010_alter_group_name_max_length', '2020-02-01 17:48:19.832910'),
 (16, 'auth', '0011_update_proxy_permissions', '2020-02-01 17:48:19.866828'),
 (17, 'sessions', '0001_initial', '2020-02-01 17:48:20.284371'),
-(18, 'blog', '0001_initial', '2020-02-01 18:08:35.198729');
+(18, 'blog', '0001_initial', '2020-02-01 18:08:35.198729'),
+(19, 'users', '0001_initial', '2020-02-03 09:35:03.482389');
 
 -- --------------------------------------------------------
 
@@ -262,7 +277,27 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('26u56yevwq0ifikl8dns3v52wid2buwd', 'N2U3NjAwZTA1NDMwNzExN2Q3ZDIxNjMzNzMwMmY0NjJhZTY4OTU1Yjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5OGRlMWFkYmM0N2EwOGU4MmExNjRhYWRlN2QyZDRjNTAwYjk2YWE4In0=', '2020-02-16 10:35:35.295922');
+('bud48jysc1k56eqofjh03i1n4xhcq45g', 'N2U3NjAwZTA1NDMwNzExN2Q3ZDIxNjMzNzMwMmY0NjJhZTY4OTU1Yjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5OGRlMWFkYmM0N2EwOGU4MmExNjRhYWRlN2QyZDRjNTAwYjk2YWE4In0=', '2020-02-17 09:36:42.865307'),
+('ijlqeze54w49vxqkshskxp1o11ce9prs', 'N2U3NjAwZTA1NDMwNzExN2Q3ZDIxNjMzNzMwMmY0NjJhZTY4OTU1Yjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5OGRlMWFkYmM0N2EwOGU4MmExNjRhYWRlN2QyZDRjNTAwYjk2YWE4In0=', '2020-02-17 06:20:42.807128');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_profile`
+--
+
+CREATE TABLE `users_profile` (
+  `id` int(11) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users_profile`
+--
+
+INSERT INTO `users_profile` (`id`, `image`, `user_id`) VALUES
+(2, 'profile_pics/elephant.png', 3);
 
 --
 -- Indexes for dumped tables
@@ -341,6 +376,13 @@ ALTER TABLE `django_session`
   ADD KEY `django_session_expire_date_a5c62663` (`expire_date`);
 
 --
+-- Indexes for table `users_profile`
+--
+ALTER TABLE `users_profile`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_id` (`user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -360,7 +402,7 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `auth_user`
@@ -396,13 +438,19 @@ ALTER TABLE `django_admin_log`
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `users_profile`
+--
+ALTER TABLE `users_profile`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -440,6 +488,12 @@ ALTER TABLE `auth_user_user_permissions`
 --
 ALTER TABLE `blog_post`
   ADD CONSTRAINT `blog_post_author_id_dd7a8485_fk_auth_user_id` FOREIGN KEY (`author_id`) REFERENCES `auth_user` (`id`);
+
+--
+-- Constraints for table `users_profile`
+--
+ALTER TABLE `users_profile`
+  ADD CONSTRAINT `users_profile_user_id_2112e78d_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
